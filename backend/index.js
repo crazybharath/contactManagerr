@@ -4,9 +4,6 @@ const mongoose=require('mongoose');
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
-const contacts= require("./models/contacts");
-const fileupload=require("express-fileupload")
-app.use(fileupload());
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const JWT_SECRET="BandaruAvinash";
