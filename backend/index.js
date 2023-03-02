@@ -4,6 +4,9 @@ const mongoose=require('mongoose');
 app.use(express.json());
 const cors = require("cors");
 app.use(cors());
+const contacts= require("./models/contacts");
+const fileupload=require("express-fileupload")
+app.use(fileupload());
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const JWT_SECRET="BandaruAvinash";
@@ -54,6 +57,60 @@ app.post("/login-user", async(req, res) => {
     }
     res.json({status: 'error',error:"Invalid Password"});
 })
+
+app.post("/upload",async(req,res)=>{
+    const {file}=req.files;
+    // console.log(file);
+    const contact=file.data.toString().split("\r\n");
+    // console.log(contacts);
+    try{
+        for(let i=0;i<contact.length;i++){
+            let data=contact[i].split(',');
+            const postData=await contacts.create({
+                name:data[0],
+                designation:data[1],
+                company:data[2],
+                industry:data[3],
+                email:data[4],
+                phonenumber:data[5],
+                country:data[6]
+            })
+            console.log(postData);
+        }
+        res.json({
+            status:"sucess",
+            result:"uploaded files are stored in database sucessfully"
+        })
+    }catch(err){
+        res.status(400).json({
+            status:"failure",
+            message:err.message
+        })
+    }
+})
+
+app.delete("/delete",async(req,res)=>{
+    const{delId}=(req.body);
+    try{
+        for(let i=0;i<delId.length;i++){
+            const row=await contacts.findOne({_id:delId[i]});
+            if(row){
+                const delData=await contacts.deleteOne({_id:delId[i]});
+
+            }
+        }
+        res.json({
+            status:true,
+            result:"Selected files are deleted"
+        })
+    }catch(err){
+        res.status(400).json({
+            status:"failure",
+            message:err.message
+        })
+    }
+})
+
 app.listen(port,()=>{
     console.log("server started");
 }) 
