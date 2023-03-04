@@ -12,5 +12,7 @@ app.use(logInRoute)
 app.use('/',(req,res)=>{
     res.send('working fine')
 })
-
 app.listen(port, () => console.log(`app running on port ${port}`));
+
+
+
