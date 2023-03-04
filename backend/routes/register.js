@@ -1,6 +1,5 @@
 const express=require('express');
-const user=require('../models/user')
-const userModel = require('../models/user')
+const userModel = require("../Models/user")
 const bcrypt = require("bcrypt")
 
 const router= express.Router()

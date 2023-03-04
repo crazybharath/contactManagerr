@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
-const userModel = require('../models/user')
+const userModel = require("../Models/user")
 const jwt = require("jsonwebtoken")
 //jwt Secret key
 const secret = "ContactManager"

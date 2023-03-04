@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const contact = require("./../models/contacts")
-const users = require("../models/user")
+const contact = require("../Models/contacts")
+const users = require("../Models/user")
 const checkAuth = require("./../Authorization/auth")
 
 router.get("/allcontacts/:userID/:search", checkAuth, async (req, res) => {

@@ -1,5 +1,5 @@
 const express=require('express');
-const contact=require('../models/contacts')
+const contact=require("../Models/contacts")
 const verify=require('../Authorization/auth')
 
 const router= express.Router()
