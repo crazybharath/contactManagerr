@@ -3,6 +3,8 @@ const conn = require("./connection/conn");
 const cors = require("cors");
 const registerRoute = require("./routes/register");
 const logInRoute = require('./routes/Login')
+const addContact=require('./routes/addcontacts')
+const deleteContact=require('./routes/deletecontact')
 const allcontact = require("./routes/getAllContacts")
 const searchByEmail = require("./routes/searchByEmail")
 const app = express();
@@ -11,6 +13,8 @@ conn();
 app.use(cors());
 app.use(registerRoute);
 app.use(logInRoute)
+app.use(addContact)
+app.use(deleteContact)
 app.use(allcontact)
 app.use(searchByEmail)
 app.use('/',(req,res)=>{
