@@ -38,7 +38,7 @@ const ImportFile = (props) => {
     try {
       axios
         .post(
-          `http://localhost:8050/addcontact`,
+          `http://localhost:5050/addcontact`,
           formData,
           {
             headers: {
