@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken")
 const secret = "ContactManager"
 //Middle wares
 router.use(express.json())
-//router.use(express.urlencoded())
+router.use(express.urlencoded())
 
 //post method
 router.post("/login", async(req, res)=>{    
